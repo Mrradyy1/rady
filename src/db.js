@@ -1,0 +1,68 @@
+import fs from 'fs';
+import path from 'path';
+
+const dbPath = path.join(process.cwd(), 'data', 'db.json');
+
+const seedData = {
+  users: [],
+  products: [
+    {
+      id: 'p1',
+      title: 'Vintage Hero Collection #1',
+      category: 'Comics',
+      price: 79.99,
+      image: 'https://images.unsplash.com/photo-1612404730960-5c71577fca11?auto=format&fit=crop&w=1200&q=80',
+      description: 'Limited edition print with embossed cover and archival quality pages.',
+      stock: 12
+    },
+    {
+      id: 'p2',
+      title: 'Noir Collector Figure',
+      category: 'Collectibles',
+      price: 149.99,
+      image: 'https://images.unsplash.com/photo-1618336753974-aae8e04506aa?auto=format&fit=crop&w=1200&q=80',
+      description: 'Hand-painted resin figurine inspired by classic comic noir detectives.',
+      stock: 7
+    },
+    {
+      id: 'p3',
+      title: 'Premium Artbook: Golden Age Panels',
+      category: 'Artbooks',
+      price: 59.99,
+      image: 'https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=1200&q=80',
+      description: 'Curated archive of iconic panels with commentary from contemporary artists.',
+      stock: 25
+    },
+    {
+      id: 'p4',
+      title: 'Signed Variant Cover Pack',
+      category: 'Comics',
+      price: 199.0,
+      image: 'https://images.unsplash.com/photo-1588497859490-85d1c17db96d?auto=format&fit=crop&w=1200&q=80',
+      description: 'Exclusive 5-pack signed by award-winning creators and sealed with authenticity card.',
+      stock: 4
+    }
+  ],
+  carts: {},
+  offers: [],
+  orders: []
+};
+
+export function ensureDb() {
+  if (!fs.existsSync(dbPath)) {
+    fs.writeFileSync(dbPath, JSON.stringify(seedData, null, 2));
+  }
+}
+
+export function readDb() {
+  ensureDb();
+  return JSON.parse(fs.readFileSync(dbPath, 'utf8'));
+}
+
+export function writeDb(data) {
+  fs.writeFileSync(dbPath, JSON.stringify(data, null, 2));
+}
+
+export function nextId(prefix) {
+  return `${prefix}_${Date.now()}_${Math.random().toString(36).slice(2, 8)}`;
+}
