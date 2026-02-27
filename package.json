@@ -1,0 +1,11 @@
+{
+  "name": "comiking",
+  "version": "1.0.0",
+  "description": "Comiking advanced full-stack ecommerce platform",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node --test"
+  }
+}

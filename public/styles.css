@@ -1,0 +1,107 @@
+:root {
+  --bg: #f5f1e8;
+  --panel: rgba(255, 255, 255, 0.75);
+  --text: #1e1a15;
+  --accent: #a67c37;
+  --muted: #5f5951;
+  --shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+}
+
+html[data-theme='dark'] {
+  --bg: #121314;
+  --panel: rgba(30, 30, 32, 0.76);
+  --text: #ece5db;
+  --accent: #f2c572;
+  --muted: #b9afa1;
+  --shadow: 0 15px 40px rgba(0, 0, 0, 0.45);
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background: radial-gradient(circle at top, #2f2a22 0%, var(--bg) 40%);
+  color: var(--text);
+  transition: background 0.6s ease, color 0.6s ease;
+}
+h1, h2, h3, .kicker { font-family: 'Cinzel', serif; letter-spacing: 0.03em; }
+
+.topbar {
+  position: fixed;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(1100px, 96%);
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1rem;
+}
+.topbar nav { display: flex; gap: 1rem; }
+.topbar a { color: var(--text); text-decoration: none; opacity: 0.8; }
+
+.glass { backdrop-filter: blur(10px); background: var(--panel); border: 1px solid rgba(255,255,255,0.24); border-radius: 16px; box-shadow: var(--shadow); }
+.hero { position: relative; min-height: 82vh; display: grid; place-items: center; overflow: hidden; }
+.hero-image { width: 100%; height: 82vh; object-fit: cover; filter: brightness(0.75); transform: scale(1.05); animation: drift 12s ease-in-out infinite alternate; }
+@keyframes drift { from { transform: scale(1.05) translateY(0); } to { transform: scale(1.1) translateY(-12px); } }
+.hero-overlay { position: absolute; inset: 0; background: linear-gradient(180deg, transparent 30%, rgba(0,0,0,0.6)); }
+.hero-content {
+  position: absolute;
+  bottom: 8%;
+  width: min(800px, 94%);
+  padding: 1.5rem;
+  animation: fadeUp 1s ease both;
+}
+@keyframes fadeUp { from { opacity: 0; transform: translateY(20px);} to { opacity: 1; transform: translateY(0);} }
+.kicker { color: var(--accent); text-transform: uppercase; }
+
+main { width: min(1100px, 96%); margin: -2rem auto 3rem; display: grid; gap: 1rem; }
+.panel { padding: 1rem; border-radius: 16px; background: var(--panel); box-shadow: var(--shadow); animation: fadeUp 0.8s ease both; }
+.two-col { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem; }
+.grid2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0.5rem; margin-bottom: 0.8rem; }
+.inline { display: grid; grid-template-columns: 1fr auto; gap: 0.6rem; }
+.stack { display: grid; gap: 0.5rem; }
+.tabs { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.8rem; }
+.product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 0.8rem; }
+
+.card {
+  border-radius: 14px;
+  overflow: hidden;
+  background: rgba(0,0,0,0.12);
+  border: 1px solid rgba(255,255,255,0.15);
+  transform: translateY(0);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.card:hover { transform: translateY(-6px); box-shadow: var(--shadow); }
+.card img { width: 100%; height: 140px; object-fit: cover; }
+.card-body { padding: 0.7rem; }
+
+.btn {
+  border: none;
+  padding: 0.55rem 0.9rem;
+  border-radius: 999px;
+  background: linear-gradient(120deg, #97703a, var(--accent));
+  color: #fff;
+  cursor: pointer;
+  transition: transform 0.25s ease, filter 0.25s ease;
+}
+.btn:hover { transform: scale(1.03); filter: brightness(1.08); }
+.btn.ghost { background: transparent; color: var(--text); border: 1px solid rgba(255,255,255,0.4); }
+
+input, select {
+  width: 100%;
+  padding: 0.6rem;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.3);
+  background: rgba(255,255,255,0.2);
+  color: var(--text);
+}
+.muted { color: var(--muted); }
+.assistant-log { min-height: 80px; max-height: 180px; overflow: auto; display: grid; gap: 0.4rem; margin-bottom: 0.6rem; }
+.bubble { padding: 0.55rem; border-radius: 10px; background: rgba(0,0,0,0.14); }
+.bubble.user { border-left: 3px solid var(--accent); }
+
+@media (max-width: 760px) {
+  .topbar nav { display: none; }
+}
