@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Comiking — Premium Comic Commerce</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <header class="topbar glass">
+      <h1>Comiking</h1>
+      <nav>
+        <a href="#shelves">Shelves</a>
+        <a href="#checkout">Checkout</a>
+        <a href="#assistant">AI Assistant</a>
+      </nav>
+      <button id="themeToggle" class="btn ghost">🌗 Theme</button>
+    </header>
+
+    <section class="hero">
+      <div class="hero-overlay"></div>
+      <img src="https://images.unsplash.com/photo-1633613286991-611fe299c4be?auto=format&fit=crop&w=1800&q=80" alt="Comics banner" class="hero-image" />
+      <div class="hero-content glass">
+        <p class="kicker">Collector-grade marketplace</p>
+        <h2>Curated comics, elite collectibles, and immersive commerce.</h2>
+        <p>Experience smooth motion, classic typography, and modern full-stack functionality in one premium destination.</p>
+        <div class="hero-cta">
+          <button class="btn" id="exploreBtn">Explore Collection</button>
+          <button class="btn ghost" id="demoLoginBtn">Demo Login</button>
+        </div>
+      </div>
+    </section>
+
+    <main>
+      <section class="panel" id="authPanel">
+        <h3>Secure Access</h3>
+        <form id="signupForm" class="grid2">
+          <input placeholder="Full name" name="name" required />
+          <input placeholder="Email" type="email" name="email" required />
+          <input placeholder="Password (min 8 chars)" type="password" name="password" required minlength="8" />
+          <button class="btn" type="submit">Sign Up</button>
+        </form>
+        <form id="loginForm" class="grid2">
+          <input placeholder="Email" type="email" name="email" required />
+          <input placeholder="Password" type="password" name="password" required />
+          <button class="btn ghost" type="submit">Login</button>
+        </form>
+        <p id="authStatus" class="muted"></p>
+      </section>
+
+      <section class="panel" id="shelves">
+        <h3>Dynamic Product Shelves</h3>
+        <div id="categoryTabs" class="tabs"></div>
+        <div id="products" class="product-grid"></div>
+      </section>
+
+      <section class="panel two-col">
+        <div>
+          <h3>Wishlist</h3>
+          <div id="wishlist" class="stack"></div>
+        </div>
+        <div>
+          <h3>User Profile & Followers</h3>
+          <div id="profile" class="stack"></div>
+        </div>
+      </section>
+
+      <section class="panel two-col" id="checkout">
+        <div>
+          <h3>Checkout</h3>
+          <div id="cart" class="stack"></div>
+          <form id="checkoutForm" class="stack">
+            <input name="shippingAddress" placeholder="Shipping address" required />
+            <select name="paymentMethod">
+              <option>Card</option>
+              <option>PayPal</option>
+              <option>Crypto</option>
+            </select>
+            <button class="btn" type="submit">Complete Checkout</button>
+          </form>
+        </div>
+        <div>
+          <h3>Order Tracking</h3>
+          <div id="orders" class="stack"></div>
+        </div>
+      </section>
+
+      <section class="panel" id="assistant">
+        <h3>Comiking AI Concierge</h3>
+        <div id="assistantLog" class="assistant-log"></div>
+        <form id="assistantForm" class="inline">
+          <input name="question" placeholder="Ask about products, orders, offers, or account..." required />
+          <button class="btn" type="submit">Ask</button>
+        </form>
+      </section>
+    </main>
+
+    <script src="/app.js" defer></script>
+  </body>
+</html>
